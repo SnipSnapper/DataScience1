@@ -44,8 +44,8 @@ namespace DataScience1
             }
             else
             {
-
                 dictionary.Add(userID, new List<User>());
+                dictionary[userID].Add(new User { ID = userID, Article = article, Rating = rating });
             }
             return dictionary;
 
