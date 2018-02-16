@@ -12,7 +12,7 @@ namespace DataScience1
         readonly static string path = "../../Data/userItem.data";
         static Dictionary<int, List<User>> dictionary = new Dictionary<int, List<User>>();
 
-        public static void ReadFile()
+        public static Dictionary<int, List<User>> ReadFile()
         {
 
             using (var reader = new StreamReader(path))
@@ -31,10 +31,11 @@ namespace DataScience1
                 }
 
             }
-            Write();
+            //Write();
+            return dictionary;
         }
 
-        public static void FillDictionary(int userID, int article, double rating)
+        public static Dictionary<int, List<User>> FillDictionary(int userID, int article, double rating)
         {
 
             if (dictionary.ContainsKey(userID))
@@ -46,6 +47,7 @@ namespace DataScience1
 
                 dictionary.Add(userID, new List<User>());
             }
+            return dictionary;
 
         }
         public static void Write()
