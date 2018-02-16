@@ -26,12 +26,9 @@ namespace DataScience1
                     int article = int.Parse(values[1]);
                     double rating = double.Parse(values[2]);
 
-
                     FillDictionary(userID, article, rating);
                 }
-
             }
-            //Write();
             return dictionary;
         }
 

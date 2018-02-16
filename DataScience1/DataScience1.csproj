@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Euclidian.cs" />
+    <Compile Include="Query.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Program.cs" />
