@@ -8,8 +8,8 @@ namespace DataScience1
 {
     class Manhatten
     {
-        static double distance;
-        static double calculatedDistance;
+        private static double distance;
+        private static double calculatedDistance;
 
         public static double CalculateManhatten(Dictionary<int, List<User>> dictionary) {
 

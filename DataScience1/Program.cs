@@ -27,20 +27,22 @@ namespace DataScience1
             {
                 case 1:
                     Console.WriteLine("you have chosen Euclidian");
-                    Console.WriteLine("The euclidian distance is: " + Euclidian.CalculateEuclidian(dictionary));
+                    Console.WriteLine("The similarity is: " + Euclidian.CalculateEuclidian(dictionary));
                     Console.ReadLine();
                     break;
                 case 2:
                     Console.WriteLine("You have chosen Manhatten");
-                    Console.WriteLine("The euclidian distance is: " + Manhatten.CalculateManhatten(dictionary));
+                    Console.WriteLine("The similarity is: " + Manhatten.CalculateManhatten(dictionary));
                     Console.ReadLine();
                     break;
                 case 3:
                     Console.WriteLine("You have chosen Pearson");
+                    Console.WriteLine("The similarity is: " + Pearson.CalculatePearson(dictionary));
                     Console.ReadLine();
                     break;
                 case 4:
                     Console.WriteLine("You have chosen Cosine");
+                    Console.WriteLine("The similarity is: " + Cosine.CalculateCosine(dictionary));
                     Console.ReadLine();
                     break;
                 default:

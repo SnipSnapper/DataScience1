@@ -8,8 +8,8 @@ namespace DataScience1
 {
     class Euclidian
     {
-        static double distance;
-        static double calculatedDistance;
+        private static double distance;
+        private static double calculatedDistance;
         public static double CalculateEuclidian(Dictionary<int, List<User>> dictionary) {
 
             var user1 = Query.query(dictionary);
