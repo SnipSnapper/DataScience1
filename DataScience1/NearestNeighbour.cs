@@ -8,13 +8,17 @@ namespace DataScience1
 {
     class NearestNeighbour
     {
+        static int i = 0;
 
-        public static void calculate(List<double> similarity) {
+        public static void calculate(List<User> user1, List<User> user2, Dictionary<int, List<User>> dictionary) {
 
-            foreach (var item in similarity)
+            Console.WriteLine("Target user is: " + user1[0].ID);
+            foreach (var item in user2)
             {
-                Console.WriteLine("Similarity = " + item);
+                Console.WriteLine("User: " + user2[i].ID + " " + Euclidian.CalculateEuclidian(dictionary, user1, user2));
+                i++;
             }
+            Console.ReadLine();
         }
     }
 }

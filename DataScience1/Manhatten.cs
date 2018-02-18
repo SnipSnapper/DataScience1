@@ -11,11 +11,7 @@ namespace DataScience1
         private static double distance;
         private static double calculatedDistance;
 
-        public static double CalculateManhatten(Dictionary<int, List<User>> dictionary) {
-
-
-            var user1 = Query.query(dictionary);
-            var user2 = Query.query(dictionary);
+        public static double CalculateManhatten(Dictionary<int, List<User>> dictionary, List<User> user1, List<User> user2) {
 
             foreach (var item1 in user1)
             {
@@ -26,9 +22,6 @@ namespace DataScience1
             }
             calculatedDistance = 1 / (1 + distance);
             return calculatedDistance;
-
-
-
         }
     }
 }

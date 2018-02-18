@@ -25,8 +25,8 @@ namespace DataScience1
         public static double CalculatePearson(Dictionary<int, List<User>> dictionary)
         {
 
-            var user1 = Query.query(dictionary);
-            var user2 = Query.query(dictionary);
+            var user1 = Query.ChooseUser(dictionary);
+            var user2 = Query.ChooseUser(dictionary);
 
 
             foreach (var item1 in user1)
