@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NearestNeighbour.cs" />
     <Compile Include="Cosine.cs" />
     <Compile Include="Euclidian.cs" />
     <Compile Include="Manhatten.cs" />
