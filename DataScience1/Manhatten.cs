@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataScience1
 {
-    class Euclidian
+    class Manhatten
     {
         static double distance;
         static double calculatedDistance;
-        public static double CalculateEuclidian(Dictionary<int, List<User>> dictionary) {
+
+        public static double CalculateManhatten(Dictionary<int, List<User>> dictionary) {
+
 
             var user1 = Query.query(dictionary);
             var user2 = Query.query(dictionary);
@@ -19,12 +21,14 @@ namespace DataScience1
             {
                 foreach (var item2 in user2.Where(x => x.Article == item1.Article))
                 {
-                    distance += Math.Pow((item1.Rating - item2.Rating),2);
+                    distance += Math.Abs(item1.Rating - item2.Rating);
                 }
             }
-            calculatedDistance = 1 / (1 + Math.Sqrt(distance));
+            calculatedDistance = 1 / (1 + distance);
             return calculatedDistance;
-        }
 
+
+
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace DataScience1
                     break;
                 case 2:
                     Console.WriteLine("You have chosen Manhatten");
+                    Console.WriteLine("The euclidian distance is: " + Manhatten.CalculateManhatten(dictionary));
                     Console.ReadLine();
                     break;
                 case 3:
