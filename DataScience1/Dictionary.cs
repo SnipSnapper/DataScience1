@@ -10,9 +10,9 @@ namespace DataScience1
     class Dictionary
     {
         readonly static string path = "../../Data/userItem.data";
-        static Dictionary<int, List<User>> dictionary = new Dictionary<int, List<User>>();
+        static Dictionary<int, Dictionary<int, double>> dictionary = new Dictionary<int, Dictionary<int,double>>();
 
-        public static Dictionary<int, List<User>> ReadFile()
+        public static Dictionary<int, Dictionary<int, double>> ReadFile()
         {
 
             using (var reader = new StreamReader(path))
@@ -32,17 +32,17 @@ namespace DataScience1
             return dictionary;
         }
 
-        public static Dictionary<int, List<User>> FillDictionary(int userID, int article, double rating)
+        public static Dictionary<int, Dictionary<int, double>> FillDictionary(int userID, int article, double rating)
         {
 
             if (dictionary.ContainsKey(userID))
             {
-                dictionary[userID].Add(new User { ID = userID, Article = article, Rating = rating });
+                dictionary[userID].Add(article, rating);
             }
             else
             {
-                dictionary.Add(userID, new List<User>());
-                dictionary[userID].Add(new User { ID = userID, Article = article, Rating = rating });
+                dictionary.Add(userID, new Dictionary<int, double>());
+                dictionary[userID].Add(article, rating);
             }
             return dictionary;
 
@@ -50,12 +50,12 @@ namespace DataScience1
         public static void Write()
         {
 
-            foreach (KeyValuePair<int, List<User>> pair in dictionary)
+            foreach (var dictpair in dictionary)
             {
-                Console.WriteLine(pair.Key);
-                foreach (var item in pair.Value)
+                Console.WriteLine(dictpair.Key);
+                foreach (var item in dictpair.Value)
                 {
-                    Console.WriteLine(" Article: {0} Rating: {1} ", item.Article, item.Rating);
+                    Console.WriteLine(" Article: {0} Rating: {1} ", item.Key, item.Value);
                 }
                 Console.ReadLine();
             }

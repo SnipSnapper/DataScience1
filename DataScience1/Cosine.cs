@@ -12,22 +12,43 @@ namespace DataScience1
         private static double part1;
         private static double part2;
         private static double part3;
-        public static double CalculateCosine(Dictionary<int, List<User>> dictionary)
+        private static double numerator;
+        private static double denumerator;
+        public static double CalculateCosine(Dictionary<int, double> user1, Dictionary<int, double> user2)
         {
 
-            var user1 = Query.ChooseUser(dictionary);
-            var user2 = Query.ChooseUser(dictionary);
+            foreach (var item in user1)
+            {
+                if (!user2.ContainsKey(item.Key))
+                {
+                    user2.Add(item.Key, 0.0);
+                }
+            }
+
+            foreach (var item in user2)
+            {
+                if (!user1.ContainsKey(item.Key))
+                {
+                    user1.Add(item.Key, 0.0);
+                }
+            }
+
+
 
             foreach (var item1 in user1)
             {
-                part2 += Math.Pow(item1.Rating, 2);
-                foreach (var item2 in user2.Where(x => x.Article == item1.Article))
+                foreach (var item2 in user2.Where(x => x.Key == item1.Key))
                 {
-                    part1 += (item1.Rating * item2.Rating);
-                    part3 += Math.Pow(item2.Rating, 2);
+                    part2 += Math.Pow(item1.Value, 2);
+                    part1 += (item1.Value * item2.Value);
+                    part3 += Math.Pow(item2.Value, 2);
                 }
             }
-            distance = part1 / (Math.Sqrt(part2) * Math.Sqrt(part3));
+
+
+            numerator = part1;
+            denumerator = Math.Sqrt(part2) * Math.Sqrt(part3);
+            distance = numerator / denumerator;
 
 
             return distance;

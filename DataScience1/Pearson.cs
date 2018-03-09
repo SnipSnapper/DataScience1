@@ -22,24 +22,22 @@ namespace DataScience1
         private static double part42;
         private static double count;
 
-        public static double CalculatePearson(Dictionary<int, List<User>> dictionary)
+        public static double CalculatePearson(Dictionary<int, double> user1, Dictionary<int, double> user2)
         {
 
-            var user1 = Query.ChooseUser(dictionary);
-            var user2 = Query.ChooseUser(dictionary);
 
 
             foreach (var item1 in user1)
             {
-                foreach (var item2 in user2.Where(x => x.Article == item1.Article))
+                foreach (var item2 in user2.Where(x => x.Key == item1.Key))
                 {
-                    part1 += item1.Rating * item2.Rating;
-                    part21 += item1.Rating;
-                    part22 += item2.Rating;
-                    part31 += Math.Pow(item1.Rating, 2);
-                    part32 += item1.Rating; //Has to be squared later on.
-                    part41 += Math.Pow(item2.Rating, 2);
-                    part42 += item2.Rating; //Has to be squared later on.
+                    part1 += item1.Value * item2.Value;
+                    part21 += item1.Value;
+                    part22 += item2.Value;
+                    part31 += Math.Pow(item1.Value, 2);
+                    part32 += item1.Value; //Has to be squared later on.
+                    part41 += Math.Pow(item2.Value, 2);
+                    part42 += item2.Value; //Has to be squared later on.
                     count += 1;
                 }
             }

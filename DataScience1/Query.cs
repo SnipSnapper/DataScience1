@@ -9,28 +9,17 @@ namespace DataScience1
     class Query
     {
         private static int selecteduser;
-        private static List<User> userlist= new List<User>();
-        public static List<User> ChooseUser(Dictionary<int, List<User>> dictionary) {
+        private static Dictionary<int, double> otheruser = new Dictionary<int, double>();
+        public static Dictionary<int, double> ChooseUser(Dictionary<int, Dictionary<int, double>> dictionary) {
             Console.WriteLine("Choose user");
             selecteduser = int.Parse(Console.ReadLine());
             var user = dictionary[selecteduser];
 
-            return user;
-        }
-        public static List<User> OtherUsers(Dictionary<int, List<User>> dictionary) {
-
-            var users = from n in dictionary
-                        where n.Key != selecteduser
-                        select n;
-
-            foreach (KeyValuePair<int, List<User>> pair in users)
+            foreach (var item in user)
             {
-                int i = 0;
-                userlist.Add(pair.Value[i]);
-                i++;
+                Console.WriteLine("article: " + item.Key + " rating: " + item.Value);
             }
-            return userlist;
-
+            return user;
         }
     }
 }

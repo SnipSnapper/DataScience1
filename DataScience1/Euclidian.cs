@@ -10,13 +10,13 @@ namespace DataScience1
     {
         private static double distance;
         private static double calculatedDistance;
-        public static double CalculateEuclidian(Dictionary<int, List<User>> dictionary, List<User> user1, List<User> user2) {
+        public static double CalculateEuclidian(Dictionary<int, double> user1, Dictionary<int, double> user2) {
 
             foreach (var item1 in user1)
             {
-                foreach (var item2 in user2.Where(x => x.Article == item1.Article))
+                foreach (var item2 in user2.Where(x => x.Key == item1.Key))
                 {
-                    distance += Math.Pow((item1.Rating - item2.Rating),2);
+                    distance += Math.Pow((item1.Value - item2.Value),2);
                 }
             }
             calculatedDistance = 1 / (1 + Math.Sqrt(distance));
