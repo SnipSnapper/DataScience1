@@ -15,37 +15,35 @@ namespace DataScience1
         static void Main(string[] args)
         {
             dictionary = Dictionary.ReadFile();
-            //ChooseStrategy();
-            Query.OtherUsers(dictionary);
+            ChooseStrategy();
+            
         }
         public static void ChooseStrategy()
         {
+            int user1 = Query.ChooseUser(dictionary);
 
             Console.WriteLine("What Strategy do you want to use? \nPress 1 for Euclidian \nPress 2 for Manhatten \nPress 3 for Pearson \nPress 4 for Cosine");
-            number = int.Parse(Console.ReadLine());
-            var user1 = Query.ChooseUser(dictionary);
-            var user2 = Query.ChooseUser(dictionary);
-
+            int number = int.Parse(Console.ReadLine());
             switch (number)
             {
                 case 1:
                     Console.WriteLine("you have chosen Euclidian");
-                    Console.WriteLine("The similarity is: " + Euclidian.CalculateEuclidian(user1, user2));
+                    NearestNeighbour.Calculate(user1, dictionary, new Euclidian());
                     Console.ReadLine();
                     break;
                 case 2:
                     Console.WriteLine("You have chosen Manhatten");
-                    Console.WriteLine("The similarity is: " + Manhatten.CalculateManhatten(user1, user2));
+                    NearestNeighbour.Calculate(user1, dictionary, new Manhatten());
                     Console.ReadLine();
                     break;
                 case 3:
                     Console.WriteLine("You have chosen Pearson");
-                    Console.WriteLine("The similarity is: " + Pearson.CalculatePearson(user1, user2));
+                    NearestNeighbour.Calculate(user1, dictionary, new Pearson());
                     Console.ReadLine();
                     break;
                 case 4:
                     Console.WriteLine("You have chosen Cosine");
-                    Console.WriteLine("The similarity is: " + Cosine.CalculateCosine(user1, user2));
+                    NearestNeighbour.Calculate(user1, dictionary, new Cosine());
                     Console.ReadLine();
                     break;
                 default:

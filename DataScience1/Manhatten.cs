@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace DataScience1
 {
-    class Manhatten
+    class Manhatten : Interface
     {
-        private static double distance;
-        private static double calculatedDistance;
 
-        public static double CalculateManhatten(Dictionary<int, double> user1, Dictionary<int, double> user2) {
+        public double Calculate(Dictionary<int, double> user1, Dictionary<int, double> user2) {
+            double distance = 0.0;
+            double calculatedDistance = 0.0;
 
             foreach (var item1 in user1)
+        {
+            foreach (var item2 in user2.Where(x => x.Key == item1.Key))
             {
-                foreach (var item2 in user2.Where(x => x.Key == item1.Key))
-                {
-                    distance += Math.Abs(item1.Value - item2.Value);
-                }
+                distance += Math.Abs(item1.Value - item2.Value);
             }
-            calculatedDistance = 1 / (1 + distance);
-            return calculatedDistance;
+        }
+        calculatedDistance = 1 / (1 + distance);
+        return calculatedDistance;
         }
     }
 }

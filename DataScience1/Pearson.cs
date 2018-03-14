@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace DataScience1
 {
-    class Pearson
+    class Pearson : Interface
     {
 
-        private static double distance;
-        private static double part1;
-        private static double part2;
-        private static double part3;
-        private static double part4;
-        private static double part21;
-        private static double part22;
-        private static double part31;
-        private static double part32;
-        private static double part41;
-        private static double part42;
-        private static double count;
-
-        public static double CalculatePearson(Dictionary<int, double> user1, Dictionary<int, double> user2)
+        
+        public double Calculate(Dictionary<int, double> user1, Dictionary<int, double> user2)
         {
+            double distance = 0.0;
+            double part1 = 0.0;
+            double part2 = 0.0;
+            double part3 = 0.0;
+            double part4 = 0.0;
+            double part21 = 0.0;
+            double part22 = 0.0;
+            double part31 = 0.0;
+            double part32 = 0.0;
+            double part41 = 0.0;
+            double part42 = 0.0;
+            double count = 0.0;
 
 
 

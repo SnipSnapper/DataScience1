@@ -8,17 +8,51 @@ namespace DataScience1
 {
     class NearestNeighbour
     {
-        //static int i = 0;
+        private static double sim;
+        private static double threshold = 0.35;
+        private static List<double> nearneighbour = new List<double>();
 
-        //public static void calculate(Dictionary<int, double> user1, Dictionary<int, double> user2, Dictionary<int, Dictionary<int, double>> dictionary) {
+        public static void Calculate(int targetuser, Dictionary<int, Dictionary<int, double>> dictionary, Interface algo)
+        {
 
-        //    Console.WriteLine("Target user is: " + user1.k);
-        //    foreach (var item in user2)
-        //    {
-        //        Console.WriteLine("User: " + user2[i].ID + " " + Euclidian.CalculateEuclidian(dictionary, user1, user2));
-        //        i++;
-        //    }
-        //    Console.ReadLine();
-        //}
+
+            foreach (var item in dictionary)
+            {
+                if (item.Key != targetuser)
+                {
+                    Console.WriteLine(targetuser);
+                    double sim = algo.Calculate(dictionary[targetuser], item.Value);
+                    if (sim > threshold)
+                    {
+                        if (nearneighbour.Count() < 3)
+                        {
+                            nearneighbour.Add(sim);
+                            nearneighbour.Sort();
+                            nearneighbour.Reverse();
+                        }
+                        else
+                        {
+                            if (nearneighbour[2] < sim)
+                            {
+                                nearneighbour.RemoveAt(2);
+                                nearneighbour.Add(sim);
+                            }
+                        }
+
+                    }
+                    
+
+                }
+
+            }
+            nearneighbour.Sort();
+            nearneighbour.Reverse();
+            foreach (var item in nearneighbour)
+            {
+                Console.WriteLine(item);
+            }
+
+
+        }
     }
 }

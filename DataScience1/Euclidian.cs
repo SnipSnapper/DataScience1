@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataScience1
 {
-    class Euclidian
+    class Euclidian : Interface
     {
-        private static double distance;
-        private static double calculatedDistance;
-        public static double CalculateEuclidian(Dictionary<int, double> user1, Dictionary<int, double> user2) {
+         
+        public double Calculate(Dictionary<int, double> user1, Dictionary<int, double> user2) {
+            double distance = 0.0;
+            double calculatedDistance = 0.0;
 
             foreach (var item1 in user1)
             {

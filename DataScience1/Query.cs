@@ -10,16 +10,16 @@ namespace DataScience1
     {
         private static int selecteduser;
         private static Dictionary<int, double> otheruser = new Dictionary<int, double>();
-        public static Dictionary<int, double> ChooseUser(Dictionary<int, Dictionary<int, double>> dictionary) {
+        public static int ChooseUser(Dictionary<int, Dictionary<int, double>> dictionary) {
             Console.WriteLine("Choose user");
             selecteduser = int.Parse(Console.ReadLine());
-            var user = dictionary[selecteduser];
+            //var user = dictionary[selecteduser];
 
-            foreach (var item in user)
-            {
-                Console.WriteLine("article: " + item.Key + " rating: " + item.Value);
-            }
-            return user;
+            //foreach (var item in user)
+            //{
+            //    Console.WriteLine("article: " + item.Key + " rating: " + item.Value);
+            //}
+            return selecteduser;
         }
     }
 }
