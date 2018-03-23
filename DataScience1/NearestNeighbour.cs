@@ -8,35 +8,46 @@ namespace DataScience1
 {
     class NearestNeighbour
     {
-        private static double sim;
         private static double threshold = 0.35;
-        private static List<double> nearneighbour = new List<double>();
+        private static List<Neighbour> nearneighbour = new List<Neighbour>();
+        Neighbour neighbour = new Neighbour();
+        static int i = 1;
 
-        public static void Calculate(int targetuser, Dictionary<int, Dictionary<int, double>> dictionary, Interface algo)
+        public static List<Neighbour> Calculate(int targetuser, Dictionary<int, Dictionary<int, double>> dictionary, Interface algo)
         {
-
 
             foreach (var item in dictionary)
             {
                 if (item.Key != targetuser)
                 {
-                    Console.WriteLine(targetuser);
+                   
                     double sim = algo.Calculate(dictionary[targetuser], item.Value);
+
+                   
+
                     if (sim > threshold)
                     {
+                        Neighbour neighbour = new Neighbour
+                        {
+                            ID = item.Key,
+                            ratings = item.Value,
+                            sim = sim,
+                        };
+
                         if (nearneighbour.Count() < 3)
                         {
-                            nearneighbour.Add(sim);
-                            nearneighbour.Sort();
-                            nearneighbour.Reverse();
+                            nearneighbour.Add(neighbour);
+
                         }
                         else
                         {
-                            if (nearneighbour[2] < sim)
+                            threshold = nearneighbour.Select(x => x.sim).Min();
+                            if (sim > threshold)
                             {
-                                nearneighbour.RemoveAt(2);
-                                nearneighbour.Add(sim);
+                                nearneighbour.Remove(nearneighbour.Find(x => x.sim == threshold));
+                                nearneighbour.Add(neighbour);
                             }
+                            
                         }
 
                     }
@@ -45,12 +56,13 @@ namespace DataScience1
                 }
 
             }
-            nearneighbour.Sort();
-            nearneighbour.Reverse();
-            foreach (var item in nearneighbour)
+            foreach (var item in nearneighbour.OrderByDescending(x => x.sim))
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Nearest Neighbour " + i + ": " + item.ID  + " with similarity: " + item.sim);
+                i++;
             }
+
+            return nearneighbour;
 
 
         }

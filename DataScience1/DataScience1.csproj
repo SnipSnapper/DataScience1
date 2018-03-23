@@ -47,6 +47,7 @@
     <Compile Include="Cosine.cs" />
     <Compile Include="Euclidian.cs" />
     <Compile Include="Manhatten.cs" />
+    <Compile Include="Neighbour.cs" />
     <Compile Include="Pearson.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="User.cs" />
